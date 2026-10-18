@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f8f5" />
+    <meta
+      name="description"
+      content="Tra cứu, tóm tắt và tìm hiểu pháp luật Việt Nam cùng trợ lý AI."
+    />
+    <title>Luật Việt — Trợ lý tra cứu pháp luật</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="/" aria-label="Luật Việt, trang chủ">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <path d="M16 7v19m0-16c-3.1-2.7-6.2-3.5-10-2.7v15.2c3.8-.8 6.9 0 10 2.7m0-15.2c3.1-2.7 6.2-3.5 10-2.7v15.2c-3.8-.8-6.9 0-10 2.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 7v19" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span class="brand-name">luật<span>việt</span></span>
+        </a>
+
+        <div class="sidebar-divider"></div>
+        <p class="sidebar-label">KHÔNG GIAN LÀM VIỆC</p>
+        <button class="new-search-button" id="new-search" type="button">
+          <span aria-hidden="true">＋</span> Bắt đầu tra cứu
+          <kbd>↵</kbd>
+        </button>
+
+        <div class="history-heading">
+          <p class="sidebar-label">LỊCH SỬ GẦN ĐÂY</p>
+          <button class="clear-button" id="clear-history" type="button" hidden>
+            Xóa tất cả
+          </button>
+        </div>
+        <div class="history-list" id="history-list">
+          <p class="history-empty">Các câu hỏi gần đây của bạn sẽ hiển thị tại đây.</p>
+        </div>
+
+        <div class="sidebar-bottom">
+          <div class="source-card">
+            <span class="source-icon" aria-hidden="true">
+              <svg viewBox="0 0 20 20" fill="none">
+                <path d="M10 2.5 16 5v4.3c0 4-2.5 6.5-6 8.2-3.5-1.7-6-4.2-6-8.2V5l6-2.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                <path d="m7.4 9.8 1.7 1.7 3.6-3.7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <div>
+              <strong>Ưu tiên nguồn chính thống</strong>
+              <p>Luôn đối chiếu văn bản gốc trước khi áp dụng.</p>
+              <a href="https://vbpl.vn/" target="_blank" rel="noopener noreferrer">
+                Cơ sở dữ liệu pháp luật <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+          </div>
+          <div class="profile-row">
+            <span class="profile-avatar">LV</span>
+            <span class="profile-copy"><strong>Trợ lý pháp luật</strong><small>Việt Nam · AI</small></span>
+            <span class="profile-status" aria-label="Sẵn sàng"></span>
+          </div>
+        </div>
+      </aside>
+      <button class="sidebar-backdrop" id="sidebar-backdrop" type="button" aria-label="Đóng lịch sử"></button>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Mở lịch sử tra cứu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+          <div class="breadcrumb">
+            <span class="breadcrumb-muted">Không gian làm việc</span>
+            <span class="breadcrumb-divider">/</span>
+            <strong>Tra cứu pháp luật</strong>
+          </div>
+          <a class="topbar-source" href="https://vbpl.vn/" target="_blank" rel="noopener noreferrer">
+            <span class="topbar-source-dot"></span> Nguồn pháp luật Việt Nam
+            <span aria-hidden="true">↗</span>
+          </a>
+        </header>
+
+        <div class="workspace">
+          <section class="hero" id="hero">
+            <div class="hero-intro">
+              <div class="eyebrow"><span class="eyebrow-mark">✳</span> TRỢ LÝ PHÁP LUẬT AI</div>
+              <h1>Hiểu đúng luật.<br /><span>Vững bước tiếp theo.</span></h1>
+              <p class="hero-copy">
+                Hỏi điều bạn đang băn khoăn — nhận giải thích dễ hiểu, gợi ý căn cứ
+                và hướng dẫn nơi kiểm chứng.
+              </p>
+            </div>
+
+            <form class="question-form" id="question-form">
+              <label class="visually-hidden" for="question-input">Nhập câu hỏi pháp luật</label>
+              <textarea
+                id="question-input"
+                name="question"
+                placeholder="Mô tả vấn đề pháp lý bạn muốn tìm hiểu..."
+                rows="3"
+                minlength="5"
+                maxlength="2000"
+                required
+              ></textarea>
+              <div class="input-footer">
+                <div class="input-guidance">
+                  <span class="guidance-icon" aria-hidden="true">↳</span>
+                  <span>Không nhập thông tin cá nhân nhạy cảm</span>
+                  <span class="input-separator">·</span>
+                  <span id="character-count">0/2000</span>
+                </div>
+                <button class="submit-button" id="submit-button" type="submit">
+                  <span class="submit-label">Tra cứu</span>
+                  <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                    <path d="M4.5 10h11m-4.5-4.5L15.5 10 11 14.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </form>
+
+            <div class="suggestions">
+              <div class="suggestions-heading">
+                <span class="suggestions-title">BẮT ĐẦU TỪ MỘT CHỦ ĐỀ</span>
+                <span class="suggestions-note">Chọn để điền vào câu hỏi</span>
+              </div>
+              <div class="suggestion-list">
+                <button type="button" class="suggestion-chip">
+                  <span class="chip-icon chip-work" aria-hidden="true">↗</span>
+                  <span><strong>Lao động</strong><small>Hợp đồng, tiền lương</small></span>
+                  <span class="chip-arrow" aria-hidden="true">↗</span>
+                </button>
+                <button type="button" class="suggestion-chip">
+                  <span class="chip-icon chip-home" aria-hidden="true">⌂</span>
+                  <span><strong>Đất đai & nhà ở</strong><small>Thủ tục, quyền sử dụng</small></span>
+                  <span class="chip-arrow" aria-hidden="true">↗</span>
+                </button>
+                <button type="button" class="suggestion-chip">
+                  <span class="chip-icon chip-family" aria-hidden="true">♡</span>
+                  <span><strong>Hôn nhân & gia đình</strong><small>Quyền lợi, thủ tục</small></span>
+                  <span class="chip-arrow" aria-hidden="true">↗</span>
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="answer-section" id="answer-section" aria-live="polite" hidden>
+            <div class="answer-heading">
+              <div class="answer-heading-copy">
+                <span class="answer-icon" aria-hidden="true">✳</span>
+                <div>
+                  <p class="answer-kicker">KẾT QUẢ TRA CỨU</p>
+                  <h2>Thông tin tham khảo</h2>
+                </div>
+              </div>
+              <button class="copy-button" id="copy-answer" type="button" title="Sao chép câu trả lời">
+                <span aria-hidden="true">▢</span><span>Sao chép</span>
+              </button>
+            </div>
+            <div class="question-echo">
+              <span class="question-echo-mark" aria-hidden="true">Q</span>
+              <span id="question-echo"></span>
+            </div>
+            <div class="answer-card" id="answer-card">
+              <div class="answer-meta">
+                <span class="answer-avatar" aria-hidden="true">✳</span>
+                <span>Trợ lý pháp luật</span>
+                <span class="meta-divider">·</span>
+                <span id="answer-time">Vừa xong</span>
+              </div>
+              <div class="answer-text" id="answer-text"></div>
+              <div class="answer-disclaimer">
+                <span class="disclaimer-icon" aria-hidden="true">i</span>
+                <p>AI có thể diễn giải chưa đầy đủ hoặc chưa cập nhật. Hãy kiểm tra văn bản gốc tại
+                  <a href="https://vbpl.vn/" target="_blank" rel="noopener noreferrer">Cơ sở dữ liệu quốc gia về văn bản pháp luật</a>
+                  trước khi áp dụng.</p>
+              </div>
+            </div>
+            <div class="answer-next-step">
+              <span class="next-step-icon" aria-hidden="true">↗</span>
+              <p><strong>Bước tiếp theo</strong><br />Đối chiếu điều khoản được nêu với văn bản đang có hiệu lực.</p>
+              <a href="https://vbpl.vn/" target="_blank" rel="noopener noreferrer">Tra cứu văn bản <span aria-hidden="true">↗</span></a>
+            </div>
+          </section>
+
+          <div class="loading-card" id="loading-card" aria-live="polite" hidden>
+            <span class="loading-spinner" aria-hidden="true"></span>
+            <div><strong>Đang tìm hiểu câu hỏi của bạn</strong><p>Trợ lý đang chuẩn bị thông tin tham khảo...</p></div>
+          </div>
+          <p class="error-message" id="error-message" role="alert" hidden>
+            <span class="error-icon" aria-hidden="true">!</span>
+            <span class="error-copy"></span>
+          </p>
+
+          <footer class="page-footer">
+            <span>THÔNG TIN CHỈ MANG TÍNH THAM KHẢO</span>
+            <span>Luôn xác minh quy định hiện hành trước khi áp dụng.</span>
+          </footer>
+        </div>
+      </main>
+    </div>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
